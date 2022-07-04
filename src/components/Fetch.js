@@ -40,19 +40,6 @@ export default function Fetch() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    // const fetchData = async () => {
-    //   const res = await fetch(
-    //     `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${KEY}`
-    //   );
-    //   const data = await res.json();
-    //   setWeatherData(data);
-    //   console.log(data);
-    //   setLoading(false)
-    // };
-    // fetchData();
-  }, []);
-
   return (
     <>
       <div className="searchBar">
