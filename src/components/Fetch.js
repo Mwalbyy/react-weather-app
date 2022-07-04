@@ -7,8 +7,8 @@ const part = "hourly";
 
 export default function Fetch() {
   const [weatherData, setWeatherData] = useState([]);
-  const [lat, setLat] = useState(null);
-  const [lon, setLon] = useState(null);
+  const [lat, setLat] = useState(0);
+  const [lon, setLon] = useState(0);
   const [city, setCity] = useState("leonia");
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +19,6 @@ export default function Fetch() {
           `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${KEY}`
         );
         const data = await res.json();
-        console.log("this is the city lat lon data");
         setLat(data[0].lat)
         setLon(data[0].lon)
         console.log(data)
@@ -43,7 +42,7 @@ export default function Fetch() {
   return (
     <>
       <div className="searchBar">
-        <SearchBar />
+        <SearchBar changeCity={setCity} />
       </div>
 
       <div className="weatherData">
