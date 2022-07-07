@@ -13,10 +13,7 @@ export default function Fetch() {
   const [loading, setLoading] = useState(true);
 
   const handleSubmit = async (event) => {
-    if(event.key === 'Enter'){
-      event.preventDefault()
-
-    setCity(event.target.value);
+    event.preventDefault();
     let res = await fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${KEY}`
     );
@@ -28,47 +25,10 @@ export default function Fetch() {
     );
     const data = await mainRes.json();
     setWeatherData(data);
-    console.log(data)
-    setLoading(false);}
+    console.log(data);
+    setLoading(false);
   };
 
-  // useEffect(() => {
-  //   const fetchCityData = async () => {
-  //     try {
-  //       let res = await fetch(
-  //         `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${KEY}`
-  //       );
-  //       const setData = await res.json()
-  //       const cityDataChange = ((setData) => {
-  //         setLat(setData[0].lat)
-  //         setLon(setData[0].lon)
-  //       })
-  //       cityDataChange()
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-  //   };
-
-  //   fetchCityData();
-  // }, []);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-
-  //       let res = await fetch(
-  //         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${KEY}`
-  //       );
-  //       const data = await res.json();
-  //       setWeatherData(data);
-  //       console.log(data);
-  //       setLoading(false)
-  //     } catch (e) {
-  //       console.error(e)
-  //     }
-  //   };
-  //   fetchData();
-  // },[])
   return (
     <>
       <div className="searchBar">
@@ -86,18 +46,16 @@ export default function Fetch() {
           <input
             type="text"
             placeholder="Enter city or town name"
-            onKeyDown={(event) => {
-              handleSubmit(event);
-            }}
+            onChange={event => {setCity(event.target.value)}}
           />
-          {/* <button
+          <button
             type="submit"
-            onSubmit={(event) => {
-              event.preventDefault();
+            onClick={(event) => {
+              setLoading(true);handleSubmit(event);
             }}
           >
             search
-          </button> */}
+          </button>
         </form>
       </div>
     </>
