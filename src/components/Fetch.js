@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react";
+import { React, useState } from "react";
 import SearchBar from "./SearchBar";
 import WeatherInfo from "./WeatherInfo";
 
@@ -32,31 +32,17 @@ export default function Fetch() {
   return (
     <>
       <div className="searchBar">
-        <SearchBar changeCity={setCity} />
+        <SearchBar
+          submit={handleSubmit}
+          loading={setLoading}
+          changeCity={setCity}
+        />
       </div>
-
       <div className="weatherData">
         <WeatherInfo />
         <h1>
-          {loading ? "hello" : JSON.stringify(weatherData.daily[0].temp.day)}
+          {loading ? "Loading" : JSON.stringify(weatherData.daily[0].temp.day)}
         </h1>
-      </div>
-      <div>
-        <form>
-          <input
-            type="text"
-            placeholder="Enter city or town name"
-            onChange={event => {setCity(event.target.value)}}
-          />
-          <button
-            type="submit"
-            onClick={(event) => {
-              setLoading(true);handleSubmit(event);
-            }}
-          >
-            search
-          </button>
-        </form>
       </div>
     </>
   );
