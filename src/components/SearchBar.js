@@ -7,15 +7,16 @@ export default function SearchBar(props) {
         <input
           type="text"
           placeholder="Enter city or town name"
-          onChange={(event) => {
-            props.changeCity(event.target.value);
+          onChange={async (event) => {
+            await props.changeCity(event.target.value);
           }}
         />
         <button
           type="submit"
-          onClick={(event) => {
-            props.loading(true);
-            props.submit(event);
+          onClick={ async(event) => {
+            await props.loading(true);
+            await props.submit(event);
+            console.log(props.citycity)
           }}
         >
           search

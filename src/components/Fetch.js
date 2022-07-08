@@ -25,7 +25,6 @@ export default function Fetch() {
     );
     const data = await mainRes.json();
     setWeatherData(data);
-    console.log(data);
     setLoading(false);
   };
 
@@ -33,6 +32,7 @@ export default function Fetch() {
     <>
       <div className="searchBar">
         <SearchBar
+        citycity={city}
           submit={handleSubmit}
           loading={setLoading}
           changeCity={setCity}
