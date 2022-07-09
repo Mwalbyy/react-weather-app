@@ -6,13 +6,14 @@ const KEY = "c9648bd67b02cb074a8cff7f4418e8ec";
 const part = "hourly";
 
 export default function Fetch() {
-  const [weatherData, setWeatherData] = useState([]);
+  const [weatherData, setWeatherData] = useState({});
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
   const [city, setCity] = useState("leonia");
   const [loading, setLoading] = useState(true);
 
   const handleSubmit = async (event) => {
+    if (event.key === 'Enter') {
     event.preventDefault();
     let res = await fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${KEY}`
@@ -25,7 +26,7 @@ export default function Fetch() {
     );
     const data = await mainRes.json();
     setWeatherData(data);
-    setLoading(false);
+    setLoading(false);}
   };
 
   return (
