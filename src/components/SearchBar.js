@@ -13,10 +13,9 @@ export default function SearchBar(props) {
         />
         <button
           type="submit"
-          onClick={ async(event) => {
+          onClick={async (event) => {
             await props.loading(true);
             await props.submit(event);
-            console.log(props.citycity)
           }}
         >
           search

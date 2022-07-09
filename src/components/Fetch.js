@@ -21,7 +21,7 @@ export default function Fetch() {
     setLat(setData[0].lat);
     setLon(setData[0].lon);
     let mainRes = await fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${KEY}`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${KEY}&units=imperial`
     );
     const data = await mainRes.json();
     setWeatherData(data);
@@ -32,7 +32,6 @@ export default function Fetch() {
     <>
       <div className="searchBar">
         <SearchBar
-        citycity={city}
           submit={handleSubmit}
           loading={setLoading}
           changeCity={setCity}
