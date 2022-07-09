@@ -13,8 +13,8 @@ export default function Fetch() {
   const [loading, setLoading] = useState(true);
 
   const handleSubmit = async (event) => {
-    if (event.key === 'Enter') {
     event.preventDefault();
+    
     let res = await fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${KEY}`
     );
@@ -26,7 +26,7 @@ export default function Fetch() {
     );
     const data = await mainRes.json();
     setWeatherData(data);
-    setLoading(false);}
+    setLoading(false);
   };
 
   return (

@@ -10,8 +10,6 @@ export default function SearchBar(props) {
           onChange={(event) => {
             props.changeCity(event.target.value);
           }}
-          // onKeyDown={props.submit}
-
         />
         <button
           type="submit"
