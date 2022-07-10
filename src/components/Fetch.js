@@ -31,6 +31,7 @@ export default function Fetch() {
 
   return (
     <>
+    
       <div className="searchBar">
         <SearchBar
           submit={handleSubmit}
