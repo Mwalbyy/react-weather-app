@@ -20,8 +20,10 @@ export default function Fetch() {
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${KEY}`
     );
     const setData = await res.json();
+
     setLat(setData[0].lat);
     setLon(setData[0].lon);
+
     let mainRes = await fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${KEY}&units=imperial`
     );
@@ -32,7 +34,6 @@ export default function Fetch() {
 
   return (
     <>
-    
       <div className="searchBar">
         <SearchBar
           submit={handleSubmit}
@@ -50,3 +51,4 @@ export default function Fetch() {
     </>
   );
 }
+// https://stackoverflow.com/questions/42038590/when-to-use-react-setstate-callback
