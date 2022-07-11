@@ -9,12 +9,12 @@ export default function SearchBar(props) {
           placeholder="Enter city or town name"
           onChange={(event) => {
             props.changeCity(event.target.value);
+            console.log(props.cityName)
           }}
         />
         <button
           type="submit"
           onClick={(event) => {
-            props.loading(true);
             props.submit(event);
           }}
         >

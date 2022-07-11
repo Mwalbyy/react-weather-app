@@ -14,7 +14,8 @@ export default function Fetch() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+    setLoading(true);
+
     let res = await fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${KEY}`
     );
@@ -37,6 +38,7 @@ export default function Fetch() {
           submit={handleSubmit}
           loading={setLoading}
           changeCity={setCity}
+          cityName={city}
         />
       </div>
       <div className="weatherData">
