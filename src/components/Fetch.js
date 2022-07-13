@@ -7,6 +7,7 @@ const part = "hourly";
 
 export default function Fetch() {
   const [weatherData, setWeatherData] = useState({});
+  const [latLon, setLatLon] = useState([0,0])
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
   const [city, setCity] = useState("leonia");
