@@ -7,9 +7,7 @@ const part = "hourly";
 
 export default function Fetch() {
   const [weatherData, setWeatherData] = useState({});
-  const [latLon, setLatLon] = useState([0,0])
-  const [lat, setLat] = useState(0);
-  const [lon, setLon] = useState(0);
+  const [latLon, setLatLon] = useState([]);
   const [city, setCity] = useState("leonia");
   const [loading, setLoading] = useState(true);
 
@@ -22,15 +20,15 @@ export default function Fetch() {
     );
     const setData = await res.json();
 
-    setLat(setData[0].lat);
-    setLon(setData[0].lon);
+    setLatLon([setData[0].lat, setData[0].lon])
 
     let mainRes = await fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${part}&appid=${KEY}&units=imperial`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${latLon[0]}&lon=${latLon[1]}&exclude=${part}&appid=${KEY}&units=imperial`
     );
     const data = await mainRes.json();
     setWeatherData(data);
     setLoading(false);
+    console.log(latLon);
   };
 
   return (
@@ -46,7 +44,7 @@ export default function Fetch() {
       <div className="weatherData">
         <WeatherInfo />
         <h1>
-          {loading ? "Loading" : JSON.stringify(weatherData.daily[0].temp.day)}
+          {/* {loading ? "Loading" : JSON.stringify(weatherData?.daily[0].temp.day)} */}
         </h1>
       </div>
     </>
