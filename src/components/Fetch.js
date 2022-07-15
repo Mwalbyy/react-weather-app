@@ -17,7 +17,7 @@ export default function Fetch() {
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${KEY}`
     );
     const setData = await res.json();
-
+      console.log(setData)
     setLatLon([setData[0].lat, setData[0].lon]);
   };
 
@@ -29,6 +29,7 @@ export default function Fetch() {
       `https://api.openweathermap.org/data/2.5/onecall?lat=${latLon[0]}&lon=${latLon[1]}&exclude=${part}&appid=${KEY}&units=imperial`
     );
     const data = await mainRes.json();
+    console.log(data)
     setWeatherData(data);
     setLoading(false);
     console.log(latLon);
