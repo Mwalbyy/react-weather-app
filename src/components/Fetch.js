@@ -11,16 +11,15 @@ export default function Fetch() {
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const changeCity = (async (event) => {
-    setCity(event)
+  const changeCity = async (event) => {
+    setCity(event);
     let res = await fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${KEY}`
     );
     const setData = await res.json();
 
-    setLatLon([setData[0].lat, setData[0].lon])
-  })
-
+    setLatLon([setData[0].lat, setData[0].lon]);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,10 +46,11 @@ export default function Fetch() {
       <div className="weatherData">
         <WeatherInfo />
         <h1>
-          {loading ? "Loading" : JSON.stringify(weatherData?.daily[0]?.temp?.day)}
+          {loading
+            ? "Loading"
+            : JSON.stringify(weatherData?.daily[0]?.temp?.day)}
         </h1>
       </div>
     </>
   );
 }
-// https://stackoverflow.com/questions/42038590/when-to-use-react-setstate-callback
