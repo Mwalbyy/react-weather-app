@@ -8,17 +8,20 @@ const part = "hourly";
 export default function Fetch() {
   const [weatherData, setWeatherData] = useState({});
   const [latLon, setLatLon] = useState([]);
+  const [citySelection, setCitySelection ] = useState([]);
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(true);
 
   const changeCity = async (event) => {
     setCity(event);
     let res = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${KEY}`
+      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${KEY}`
     );
     const setData = await res.json();
-      console.log(setData)
-    setLatLon([setData[0].lat, setData[0].lon]);
+    setCitySelection(setData)
+    console.log(setCitySelection)
+    console.log(setData)
+    // setLatLon([setData[0].lat, setData[0].lon]);
   };
 
   const handleSubmit = async (event) => {
@@ -44,6 +47,18 @@ export default function Fetch() {
           changeCity={changeCity}
         />
       </div>
+
+    <div className="stateChoice">
+      {/* <ul>
+        {citySelection?.forEach(choice => {
+          <>
+          <li>{choice.name}</li> 
+          <li>{choice.state}</li> 
+          </>
+        })}
+      </ul> */}
+    </div>
+
       <div className="weatherData">
         <WeatherInfo />
         <h1>
