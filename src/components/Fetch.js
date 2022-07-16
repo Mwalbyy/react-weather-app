@@ -44,22 +44,18 @@ export default function Fetch() {
           changeCity={changeCity}
         />
       </div>
-
-      <div className="stateChoice">
+      <div className="weatherData">
         <ul>
           {loading
             ? "loading"
-            : citySelection.forEach((choice) => {
-                <>
-                  {console.log(choice.name)}
-                  <h1>{JSON.stringify(choice.name)}</h1>
-                  {/* <h1>{choice.state}</h1> */}
-                </>;
+            : citySelection.map((city) => {
+                return (
+                  <li key={city.state}>
+                    {city.name}-{city.state}
+                  </li>
+                );
               })}
         </ul>
-      </div>
-
-      <div className="weatherData">
         <WeatherInfo />
         <h1>
           {loading

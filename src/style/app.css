@@ -1,1 +1,26 @@
-/* No CSS *//*# sourceMappingURL=app.css.map */
+body {
+  background: #3289a8;
+}
+
+.searchForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.searchBar {
+  height: 2em;
+}
+
+.weatherData {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=app.css.map */
