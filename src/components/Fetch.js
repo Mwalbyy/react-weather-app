@@ -8,7 +8,7 @@ const part = "hourly";
 export default function Fetch() {
   const [weatherData, setWeatherData] = useState({});
   const [latLon, setLatLon] = useState([]);
-  const [citySelection, setCitySelection ] = useState([]);
+  const [citySelection, setCitySelection] = useState([]);
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -18,10 +18,9 @@ export default function Fetch() {
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${KEY}`
     );
     const setData = await res.json();
-    setCitySelection(setData)
-    console.log(setCitySelection)
-    console.log(setData)
-    // setLatLon([setData[0].lat, setData[0].lon]);
+    setCitySelection(setData);
+    console.log(citySelection);
+    setLatLon([setData[0].lat, setData[0].lon]);
   };
 
   const handleSubmit = async (event) => {
@@ -32,10 +31,8 @@ export default function Fetch() {
       `https://api.openweathermap.org/data/2.5/onecall?lat=${latLon[0]}&lon=${latLon[1]}&exclude=${part}&appid=${KEY}&units=imperial`
     );
     const data = await mainRes.json();
-    console.log(data)
     setWeatherData(data);
     setLoading(false);
-    console.log(latLon);
   };
 
   return (
@@ -48,16 +45,19 @@ export default function Fetch() {
         />
       </div>
 
-    <div className="stateChoice">
-      {/* <ul>
-        {citySelection?.forEach(choice => {
-          <>
-          <li>{choice.name}</li> 
-          <li>{choice.state}</li> 
-          </>
-        })}
-      </ul> */}
-    </div>
+      <div className="stateChoice">
+        <ul>
+          {loading
+            ? "loading"
+            : citySelection.forEach((choice) => {
+                <>
+                  {console.log(choice.name)}
+                  <h1>{JSON.stringify(choice.name)}</h1>
+                  {/* <h1>{choice.state}</h1> */}
+                </>;
+              })}
+        </ul>
+      </div>
 
       <div className="weatherData">
         <WeatherInfo />
