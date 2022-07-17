@@ -19,8 +19,15 @@ export default function Fetch() {
     );
     const setData = await res.json();
     setCitySelection(setData);
-    console.log(citySelection);
     setLatLon([setData[0].lat, setData[0].lon]);
+  };
+
+  const chooseCity = async (event) => {
+
+    // let res = await fetch(
+    //   `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${KEY}`
+    // );
+    console.log('hello world')
   };
 
   const handleSubmit = async (event) => {
@@ -50,18 +57,16 @@ export default function Fetch() {
             ? "loading"
             : citySelection.map((city) => {
                 return (
-                  <li key={city.state}>
-                    {city.name}-{city.state}
-                  </li>
+                  <form>
+                    <li onClick={console.log("hello")} key={city.state}>
+                      {city.name}, {city.state}
+                    </li>
+                    <button onSubmit={chooseCity}><i class="fa-solid fa-magnifying-glass"></i></button>
+                  </form>
                 );
               })}
         </ul>
-        <WeatherInfo />
-        <h1>
-          {loading
-            ? "Loading"
-            : JSON.stringify(weatherData?.daily[0]?.temp?.day)}
-        </h1>
+        <WeatherInfo loading={loading} weatherData={weatherData} />
       </div>
     </>
   );

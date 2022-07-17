@@ -1,7 +1,13 @@
-import React from 'react'
+import React from "react";
 
-export default function WeatherInfo() {
+export default function WeatherInfo(props) {
   return (
-    <div></div>
-  )
+    <>
+      <h1>
+        {props.loading
+          ? "Loading"
+          : JSON.stringify(props.weatherData?.daily[0]?.temp?.day)}
+      </h1>
+    </>
+  );
 }
