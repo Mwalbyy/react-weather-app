@@ -3,8 +3,9 @@ import React from "react";
 export default function SearchBar(props) {
   return (
     <>
-      <form>
-        <input
+      <form className="searchForm">
+        <input 
+          className="searchBar"
           type="text"
           placeholder="Enter city or town name"
           onChange={(event) => {
@@ -12,6 +13,7 @@ export default function SearchBar(props) {
           }}
         />
         <button
+        className="submitButton"
           type="submit"
           onClick={(event) => {
             props.submit(event);

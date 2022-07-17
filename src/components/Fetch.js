@@ -19,8 +19,15 @@ export default function Fetch() {
     );
     const setData = await res.json();
     setCitySelection(setData);
-    console.log(citySelection);
     setLatLon([setData[0].lat, setData[0].lon]);
+  };
+
+  const chooseCity = async (event) => {
+
+    // let res = await fetch(
+    //   `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${KEY}`
+    // );
+    console.log('hello world')
   };
 
   const handleSubmit = async (event) => {
@@ -44,28 +51,22 @@ export default function Fetch() {
           changeCity={changeCity}
         />
       </div>
-
-      <div className="stateChoice">
+      <div className="weatherData">
         <ul>
           {loading
             ? "loading"
-            : citySelection.forEach((choice) => {
-                <>
-                  {console.log(choice.name)}
-                  <h1>{JSON.stringify(choice.name)}</h1>
-                  {/* <h1>{choice.state}</h1> */}
-                </>;
+            : citySelection.map((city) => {
+                return (
+                  <form>
+                    <li onClick={console.log("hello")} key={city.state}>
+                      {city.name}, {city.state}
+                    </li>
+                    <button onSubmit={chooseCity}><i class="fa-solid fa-magnifying-glass"></i></button>
+                  </form>
+                );
               })}
         </ul>
-      </div>
-
-      <div className="weatherData">
-        <WeatherInfo />
-        <h1>
-          {loading
-            ? "Loading"
-            : JSON.stringify(weatherData?.daily[0]?.temp?.day)}
-        </h1>
+        <WeatherInfo loading={loading} weatherData={weatherData} />
       </div>
     </>
   );
