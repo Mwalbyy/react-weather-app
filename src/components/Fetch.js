@@ -55,13 +55,13 @@ export default function Fetch() {
         <ul>
           {loading
             ? "loading"
-            : citySelection.map((city) => {
+            : citySelection?.map((city) => {
                 return (
                   <form>
-                    <li onClick={console.log("hello")} key={city.state}>
+                    <li key={city.state}>
                       {city.name}, {city.state}
                     </li>
-                    <button onSubmit={chooseCity}><i class="fa-solid fa-magnifying-glass"></i></button>
+                    {/* <button onSubmit={chooseCity}><i class="fa-solid fa-magnifying-glass"></i></button> */}
                   </form>
                 );
               })}

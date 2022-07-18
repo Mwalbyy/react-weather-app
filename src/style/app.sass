@@ -1,9 +1,43 @@
 /////////////////////
 // Table of Contents
 /////////////////////
-// 1. global  
-// 2. search  
-// 3. weather   
+// 1. SASS  
+// 2. global  
+// 3. search   
+// 4. Parralax   
+/////////////////////
+// Table of Contents
+/////////////////////
+//-----------------//
+/////////////////////
+// SASS 
+/////////////////////
+$screen-sm: 576px
+$screen-md: 768px
+$screen-lg: 992px
+$screen-xl: 1200px
+
+$light-grey: #efefef
+
+@mixin CenterDiv
+    display: flex
+    justify-content: center
+    align-items: center
+
+@mixin sm 
+   @media (max-width: #{$screen-sm}) 
+       @content
+@mixin md 
+   @media (max-width: #{$screen-md}) 
+       @content
+@mixin lg 
+   @media (max-width: #{$screen-lg}) 
+       @content
+@mixin xl 
+   @media (max-width: #{$screen-xl}) 
+       @content
+   
+
 /////////////////////
 // global
 /////////////////////
@@ -18,15 +52,10 @@ body
 .searchBar
     height: 2em
 
-    
-    
-    
-    
-    
-    
+
     
 /////////////////////
-// weather
+// Parralax
 /////////////////////
 .weatherData
     display: flex
