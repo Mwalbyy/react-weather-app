@@ -11,6 +11,11 @@ export default function Fetch() {
   const [citySelection, setCitySelection] = useState([]);
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState(true);
+
+  const searchAgain = () => {
+    setSearch(true);
+  };
 
   const changeCity = async (event) => {
     setCity(event);
@@ -23,11 +28,12 @@ export default function Fetch() {
   };
 
   const chooseCity = async (event) => {
-
+    event.preventDefault();
     // let res = await fetch(
     //   `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${KEY}`
     // );
-    console.log('hello world')
+    console.log("hello world");
+    console.log(event);
   };
 
   const handleSubmit = async (event) => {
@@ -40,16 +46,21 @@ export default function Fetch() {
     const data = await mainRes.json();
     setWeatherData(data);
     setLoading(false);
+    setSearch(false);
   };
 
   return (
     <>
       <div className="searchBar">
-        <SearchBar
-          submit={handleSubmit}
-          loading={setLoading}
-          changeCity={changeCity}
-        />
+        {search ? (
+          <SearchBar
+            submit={handleSubmit}
+            loading={setLoading}
+            changeCity={changeCity}
+          />
+        ) : (
+          <button onClick={searchAgain}>search again</button>
+        )}
       </div>
       <div className="weatherData">
         <ul>
@@ -58,10 +69,19 @@ export default function Fetch() {
             : citySelection?.map((city) => {
                 return (
                   <form>
-                    <li key={city.state}>
-                      {city.name}, {city.state}
+                    {/* create list of city.state and city.name next to each other, that when clicked console logs hello world */}
+                    <li>
+                      <h1>{city.name}</h1>
+                      <h1>{city.state}</h1>
+                      <button
+                        type="submit"
+                        onClick={(event) => {
+                          chooseCity(event);
+                        }}
+                      >
+                        hello world
+                      </button>
                     </li>
-                    {/* <button onSubmit={chooseCity}><i class="fa-solid fa-magnifying-glass"></i></button> */}
                   </form>
                 );
               })}
