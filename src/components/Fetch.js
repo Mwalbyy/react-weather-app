@@ -10,13 +10,18 @@ export default function Fetch() {
   const [latLon, setLatLon] = useState([]);
   const [citySelection, setCitySelection] = useState([]);
   const [city, setCity] = useState("");
+  // when loading is true certain components are not rendered 
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(true);
 
+
+  // function that hides the search results of the previous search and brings up the search bar again
   const searchAgain = () => {
     setSearch(true);
+    setLoading(true);
   };
 
+  // function that takes the search input and sends it to the API on change
   const changeCity = async (event) => {
     setCity(event);
     let res = await fetch(
@@ -27,6 +32,7 @@ export default function Fetch() {
     setLatLon([setData[0].lat, setData[0].lon]);
   };
 
+  // when city and state are selected, this function sends the lat and lon to the API to get the weather data 
   const chooseCity = async (event) => {
     event.preventDefault();
     // let res = await fetch(
@@ -63,30 +69,12 @@ export default function Fetch() {
         )}
       </div>
       <div className="weatherData">
-        <ul>
-          {loading
-            ? "loading"
-            : citySelection?.map((city) => {
-                return (
-                  <form>
-                    {/* create list of city.state and city.name next to each other, that when clicked console logs hello world */}
-                    <li>
-                      <h1>{city.name}</h1>
-                      <h1>{city.state}</h1>
-                      <button
-                        type="submit"
-                        onClick={(event) => {
-                          chooseCity(event);
-                        }}
-                      >
-                        hello world
-                      </button>
-                    </li>
-                  </form>
-                );
-              })}
-        </ul>
-        <WeatherInfo loading={loading} weatherData={weatherData} />
+        <WeatherInfo
+          loading={loading}
+          weatherData={weatherData}
+          citySelection={citySelection}
+          chooseCity={chooseCity}
+        />
       </div>
     </>
   );
