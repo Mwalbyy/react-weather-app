@@ -35,9 +35,9 @@ export default function Fetch() {
   // when city and state are selected, this function sends the lat and lon to the API to get the weather data 
   const chooseCity = async (event) => {
     event.preventDefault();
-    // let res = await fetch(
-    //   `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${KEY}`
-    // );
+    let res = await fetch(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${KEY}`
+    );
     console.log("hello world");
     console.log(event);
   };
@@ -74,7 +74,10 @@ export default function Fetch() {
           weatherData={weatherData}
           citySelection={citySelection}
           chooseCity={chooseCity}
-        />
+          setLatLon={setLatLon}
+          latLon={latLon}
+          handleSubmit={handleSubmit}
+          />
       </div>
     </>
   );

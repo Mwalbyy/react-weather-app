@@ -15,7 +15,9 @@ export default function WeatherInfo(props) {
                       <button
                         type="submit"
                         onClick={(event) => {
+                          props.setLatLon([city.lat, city.lon]);
                           props.chooseCity(event);
+                          props.handleSubmit(event)
                         }}
                       >
                         hello world
