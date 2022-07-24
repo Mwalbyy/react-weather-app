@@ -35,3 +35,5 @@ export default function WeatherInfo(props) {
     </>
   );
 }
+// city takes two clicks to get the lat and lon
+// create on change for the api call
