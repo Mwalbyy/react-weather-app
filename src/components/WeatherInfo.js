@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 
 export default function WeatherInfo(props) {
-const [loadingWeather, setLoadingWeather] = useState(true);
   return (
     <>
     <ul>
@@ -16,10 +15,11 @@ const [loadingWeather, setLoadingWeather] = useState(true);
                       <button
                         type="submit"
                         onClick={(event) => {
+                          props.setLoadingWeather(true);
                           props.setLatLon([city.lat, city.lon]);
                           props.chooseCity(event);
                           props.handleSubmit(event)
-                          setLoadingWeather(false);
+                          props.setLoadingWeather(false);
                         }}
                       >
                         this state
@@ -30,7 +30,7 @@ const [loadingWeather, setLoadingWeather] = useState(true);
               })}
         </ul>
       <h1>
-        {loadingWeather
+        {props.loadingWeather
           ? "Loading"
           : JSON.stringify(props.weatherData?.daily[0]?.temp?.day)}
       </h1>

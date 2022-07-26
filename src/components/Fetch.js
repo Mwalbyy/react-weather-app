@@ -6,6 +6,7 @@ const KEY = "c9648bd67b02cb074a8cff7f4418e8ec";
 const part = "hourly";
 
 export default function Fetch() {
+  const [loadingWeather, setLoadingWeather] = useState(true);
   const [weatherData, setWeatherData] = useState({});
   const [latLon, setLatLon] = useState([]);
   const [citySelection, setCitySelection] = useState([]);
@@ -19,6 +20,7 @@ export default function Fetch() {
   const searchAgain = () => {
     setSearch(true);
     setLoading(true);
+    setLoadingWeather(true);
   };
 
   // function that takes the search input and sends it to the API on change
@@ -77,6 +79,8 @@ export default function Fetch() {
           setLatLon={setLatLon}
           latLon={latLon}
           handleSubmit={handleSubmit}
+          setLoadingWeather={setLoadingWeather}
+          loadingWeather={loadingWeather}
           />
       </div>
     </>
