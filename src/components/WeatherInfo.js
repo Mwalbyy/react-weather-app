@@ -1,9 +1,9 @@
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+import { ParallaxLayer } from "@react-spring/parallax";
 
 export default function WeatherInfo(props) {
   return (
     <>
-      <Parallax pages={3}>
+      
         <ParallaxLayer offset={0} speed={0.5} factor={2}>
           <ul className="listOfStates">
             {props.loading
@@ -32,12 +32,14 @@ export default function WeatherInfo(props) {
                 })}
           </ul>
         </ParallaxLayer>
-      </Parallax>
-      <h1>
+        <ParallaxLayer>
+
+      <h1 className="weatherInfo">
         {props.loadingWeather
           ? "Loading"
           : JSON.stringify(props.weatherData?.daily[0]?.temp?.day)}
       </h1>
+        </ParallaxLayer>
     </>
   );
 }

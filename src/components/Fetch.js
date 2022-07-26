@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Parallax } from "@react-spring/parallax";
 import SearchBar from "./SearchBar";
 import WeatherInfo from "./WeatherInfo";
 
@@ -11,10 +12,9 @@ export default function Fetch() {
   const [latLon, setLatLon] = useState([]);
   const [citySelection, setCitySelection] = useState([]);
   const [city, setCity] = useState("");
-  // when loading is true certain components are not rendered 
+  // when loading is true certain components are not rendered
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState(true);
-
 
   // function that hides the search results of the previous search and brings up the search bar again
   const searchAgain = () => {
@@ -34,7 +34,7 @@ export default function Fetch() {
     setLatLon([setData[0].lat, setData[0].lon]);
   };
 
-  // when city and state are selected, this function sends the lat and lon to the API to get the weather data 
+  // when city and state are selected, this function sends the lat and lon to the API to get the weather data
   const chooseCity = async (event) => {
     event.preventDefault();
     let res = await fetch(
@@ -70,19 +70,21 @@ export default function Fetch() {
           <button onClick={searchAgain}>search again</button>
         )}
       </div>
-      <div className="weatherData">
-        <WeatherInfo
-          loading={loading}
-          weatherData={weatherData}
-          citySelection={citySelection}
-          chooseCity={chooseCity}
-          setLatLon={setLatLon}
-          latLon={latLon}
-          handleSubmit={handleSubmit}
-          setLoadingWeather={setLoadingWeather}
-          loadingWeather={loadingWeather}
+      <Parallax pages={3}>
+        <div className="weatherData">
+          <WeatherInfo
+            loading={loading}
+            weatherData={weatherData}
+            citySelection={citySelection}
+            chooseCity={chooseCity}
+            setLatLon={setLatLon}
+            latLon={latLon}
+            handleSubmit={handleSubmit}
+            setLoadingWeather={setLoadingWeather}
+            loadingWeather={loadingWeather}
           />
-      </div>
+        </div>
+      </Parallax>
     </>
   );
 }
