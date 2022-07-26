@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import SearchBar from "./SearchBar";
 import WeatherInfo from "./WeatherInfo";
 
@@ -41,7 +41,7 @@ export default function Fetch() {
       `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${KEY}`
     );
     console.log("hello world");
-    console.log(event);
+    console.log(res);
   };
 
   const handleSubmit = async (event) => {
