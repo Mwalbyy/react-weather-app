@@ -1,5 +1,6 @@
 body {
   background-image: url(../assets/_background.jpg);
+  overflow: hidden;
 }
 
 .searchForm {
@@ -22,5 +23,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.listOfStates {
+  background-color: #fff;
 }
 /*# sourceMappingURL=app.css.map */
