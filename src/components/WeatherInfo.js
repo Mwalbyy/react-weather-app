@@ -1,43 +1,43 @@
 import { ParallaxLayer } from "@react-spring/parallax";
+import { useState } from "react";
+
 
 export default function WeatherInfo(props) {
+  const [showStates, setShowStates] = useState(false);
+
   return (
     <>
-      <ParallaxLayer offset={0} speed={0.5} factor={2}>
-        <ul className="listOfStates">
-          {props.loading
-            ? "loading"
-            : props.citySelection?.map((city) => {
-                return (
-                  <form>
-                    <li>
-                      <h1>{city.name}</h1>
-                      <h1>{city.state}</h1>
-                      <button
-                        type="submit"
-                        onClick={(event) => {
-                          props.setLoadingWeather(true);
-                          props.setLatLon([city.lat, city.lon]);
-                          props.chooseCity(event);
-                          props.handleSubmit(event);
-                          props.setLoadingWeather(false);
-                        }}
-                      >
-                        this state
-                      </button>
-                    </li>
-                  </form>
-                );
-              })}
-        </ul>
-      </ParallaxLayer>
-      <ParallaxLayer>
-        <h1 className="weatherInfo">
-          {props.loadingWeather
-            ? "Loading"
-            : JSON.stringify(props.weatherData?.daily[0]?.temp?.day)}
-        </h1>
-      </ParallaxLayer>
+      <ul className="listOfStates">
+        {props.loading
+          ? ""
+          : props.citySelection?.map((city) => {
+              return (
+                <form>
+                  <li>
+                    <button
+                      className="btn"
+                      type="submit"
+                      onClick={(event) => {
+                        setShowStates(true)
+                        props.setLoadingWeather(true);
+                        props.setLatLon([city.lat, city.lon]);
+                        props.chooseCity(event);
+                        props.handleSubmit(event);
+                        props.setLoadingWeather(false);
+                      }}
+                    >
+                      {city.name},{city.state}
+                    </button>
+                  </li>
+                </form>
+              );
+            })}
+      </ul>
+      <h1 className="weatherInfo">
+        {props.loadingWeather
+          ? ""
+          : JSON.stringify(props.weatherData?.daily[0]?.temp?.day)}
+      </h1>
     </>
   );
 }

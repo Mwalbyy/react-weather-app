@@ -70,7 +70,6 @@ export default function Fetch() {
           <button onClick={searchAgain}>search again</button>
         )}
       </div>
-      <Parallax pages={3}>
         <div className="weatherData">
           <WeatherInfo
             loading={loading}
@@ -84,7 +83,6 @@ export default function Fetch() {
             loadingWeather={loadingWeather}
           />
         </div>
-      </Parallax>
     </>
   );
 }
