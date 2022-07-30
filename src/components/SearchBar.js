@@ -6,7 +6,7 @@ export default function SearchBar(props) {
           className="searchBar"
           type="text"
           placeholder="Enter city or town name"
-          onChange={(event) => {
+          onChange={event => {            
             props.changeCity(event.target.value);
           }}
         />
@@ -14,6 +14,8 @@ export default function SearchBar(props) {
         className="submitButton"
           type="submit"
           onClick={(event) => {
+            console.log(event);
+            
             props.submit(event);
           }}
         >
