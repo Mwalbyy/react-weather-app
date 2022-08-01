@@ -41,14 +41,15 @@ $light-grey: #efefef
 // global
 /////////////////////
 body
-    background-image: url(../assets/_background.jpg)
+    // background-image: url(../assets/_background.jpg)
+    background-color: grey
     overflow: hidden
+    font-family: 'Roboto Condensed', sans-serif
 /////////////////////
 // search
 /////////////////////
 .searchForm
-    display: flex
-    justify-content: center
+    @include CenterDiv
 .searchBar
     height: 2em
 
