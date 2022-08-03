@@ -6,8 +6,10 @@ export default function home() {
     <>
       <div className="searchForm">
         <div className="searchBar">
-          <input type="text" />
-          <button type="submit">submit</button>
+          <input className="searchInput" type="text" />
+          <button className="btn" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </div>
       </div>
       

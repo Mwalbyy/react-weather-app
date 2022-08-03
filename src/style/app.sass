@@ -40,6 +40,8 @@ $light-grey: #efefef
 /////////////////////
 // global
 /////////////////////
+*
+    border: none
 body
     // background-image: url(../assets/_background.jpg)
     background-color: grey
@@ -50,9 +52,20 @@ body
 /////////////////////
 .searchForm
     @include CenterDiv
-.searchBar
-    height: 2em
 
+.btn 
+    background-color: transparent
+    
+.btn:hover
+    background-color: #efefef
+    transition: background-color 0.5s ease-in-out
+.searchInput:focus
+    outline: none
+    border: none
+.searchInput
+  
+    font-family: 'Roboto Condensed', sans-serif
+    
 /////////////////////
 // Parralax
 /////////////////////

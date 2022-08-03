@@ -1,3 +1,7 @@
+* {
+  border: none;
+}
+
 body {
   background-color: grey;
   overflow: hidden;
@@ -16,8 +20,23 @@ body {
           align-items: center;
 }
 
-.searchBar {
-  height: 2em;
+.btn {
+  background-color: transparent;
+}
+
+.btn:hover {
+  background-color: #efefef;
+  -webkit-transition: background-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.searchInput:focus {
+  outline: none;
+  border: none;
+}
+
+.searchInput {
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .weatherData {
