@@ -47,25 +47,25 @@ body
     background-color: grey
     overflow: hidden
     font-family: 'Roboto Condensed', sans-serif
+.center
+    @include CenterDiv
 /////////////////////
 // search
 /////////////////////
-.searchForm
-    @include CenterDiv
-
-.btn 
+.searchBar
+    border: 1px solid #ccc
+    display: flex
+    &__input
+        font-family: 'Roboto Condensed', sans-serif
+        &:focus
+            outline: none
+            border: none
+.btn
     background-color: transparent
-    
-.btn:hover
-    background-color: #efefef
-    transition: background-color 0.5s ease-in-out
-.searchInput:focus
-    outline: none
-    border: none
-.searchInput
-  
-    font-family: 'Roboto Condensed', sans-serif
-    
+    &:hover
+        background-color: #efefef
+        transition: background-color 0.5s ease-in-out
+
 /////////////////////
 // Parralax
 /////////////////////

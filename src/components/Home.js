@@ -4,10 +4,10 @@ import { ParallaxLayer } from "@react-spring/parallax";
 export default function home() {
   return (
     <>
-      <div className="searchForm">
+      <div className="center">
         <div className="searchBar">
-          <input className="searchInput" type="text" />
-          <button className="btn" type="submit">
+          <input className="searchBar__input" type="text" aria-label="search input"/>
+          <button className="btn" type="submit" aria-label="submit search button">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>

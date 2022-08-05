@@ -8,7 +8,7 @@ body {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
-.searchForm {
+.center {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,6 +20,22 @@ body {
           align-items: center;
 }
 
+.searchBar {
+  border: 1px solid #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.searchBar__input {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.searchBar__input:focus {
+  outline: none;
+  border: none;
+}
+
 .btn {
   background-color: transparent;
 }
@@ -28,15 +44,6 @@ body {
   background-color: #efefef;
   -webkit-transition: background-color 0.5s ease-in-out;
   transition: background-color 0.5s ease-in-out;
-}
-
-.searchInput:focus {
-  outline: none;
-  border: none;
-}
-
-.searchInput {
-  font-family: 'Roboto Condensed', sans-serif;
 }
 
 .weatherData {
