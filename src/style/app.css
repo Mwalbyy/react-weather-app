@@ -21,7 +21,7 @@ body {
 }
 
 .searchBar {
-  border: 1px solid #ccc;
+  background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,11 +29,14 @@ body {
 
 .searchBar__input {
   font-family: 'Roboto Condensed', sans-serif;
+  background-color: transparent;
+  display: none;
 }
 
-.searchBar__input:focus {
+.searchBar__input:focus-within {
   outline: none;
   border: none;
+  display: block;
 }
 
 .btn {
@@ -44,6 +47,10 @@ body {
   background-color: #efefef;
   -webkit-transition: background-color 0.5s ease-in-out;
   transition: background-color 0.5s ease-in-out;
+}
+
+.btn:focus-within {
+  display: block;
 }
 
 .weatherData {
