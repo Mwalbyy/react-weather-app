@@ -18,10 +18,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0 auto;
 }
 
 .searchBar {
   background-color: white;
+  border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -30,13 +32,11 @@ body {
 .searchBar__input {
   font-family: 'Roboto Condensed', sans-serif;
   background-color: transparent;
-  display: none;
 }
 
 .searchBar__input:focus-within {
   outline: none;
   border: none;
-  display: block;
 }
 
 .btn {
@@ -47,10 +47,6 @@ body {
   background-color: #efefef;
   -webkit-transition: background-color 0.5s ease-in-out;
   transition: background-color 0.5s ease-in-out;
-}
-
-.btn:focus-within {
-  display: block;
 }
 
 .weatherData {

@@ -49,30 +49,28 @@ body
     font-family: 'Roboto Condensed', sans-serif
 .center
     @include CenterDiv
+    margin: 0 auto
 /////////////////////
 // search
 /////////////////////
 .searchBar
-    // border: 1px solid #ccc
     background-color: white
+    border-radius: 5px
     display: flex
     &__input
         font-family: 'Roboto Condensed', sans-serif
         background-color: transparent
-        display: none
         &:focus-within
             outline: none
             border: none
-            display: block
+          
      
 .btn
     background-color: transparent
     &:hover
-
         background-color: #efefef
         transition: background-color 0.5s ease-in-out
-    &:focus-within
-        display: block
+   
 
 /////////////////////
 // Parralax
