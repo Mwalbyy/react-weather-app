@@ -59,13 +59,17 @@ export default function home() {
           </button>
         </div>
       </div>
-      <ul>
-        {time.map((times) => (
-          <li key={times}>{times}</li>
-        ))}
-      </ul>
-      {/* loop through the temperature and create a li for each item*/}
-      <div className="weather">
+      <Parallax pages={4} style={{ top: '10', left: '0' }}>
+        <ul>
+          {time.map((times, i) => (
+            <ParallaxLayer offset={i/8}>
+              <li key={i}>{times}</li>
+            </ParallaxLayer>
+          ))}
+        </ul>
+      </Parallax>
+
+      {/* <div className="weather">
         <h1 className="weather__location">London</h1>
         <div className="weather__info">
           <ul className="weather__list">
@@ -75,7 +79,7 @@ export default function home() {
             <li>7 mph</li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
