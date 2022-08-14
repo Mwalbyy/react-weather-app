@@ -2,44 +2,27 @@ import React from "react";
 import { ParallaxLayer, Parallax } from "@react-spring/parallax";
 
 export default function home() {
-  const time = [
-    "9:00",
-    "10:00",
-    "11:00",
-    "12:00",
-    "13:00",
-    "14:00",
-    "15:00",
-    "16:00",
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00",
-    "23:00",
-    "24:00",
-  ];
-  const temperature = [
-    "70",
-    "71",
-    "72",
-    "73",
-    "74",
-    "75",
-    "76",
-    "77",
-    "78",
-    "79",
-    "80",
-    "81",
-    "82",
-    "83",
-    "84",
-    "85",
-    "86",
-    "87",
-    "88",
+  const data = [
+    {
+      time:"9:00",
+      temp: "20"
+    },
+    {
+      time:"10:00",
+      temp: "30"
+    },
+    {
+      time:"11:00",
+      temp: "40"
+    },
+    {
+      time:"12:00",
+      temp: "50"
+    },
+    {
+      time:"13:00",
+      temp: "60"
+    }
   ];
   return (
     <>
@@ -61,9 +44,9 @@ export default function home() {
       </div>
       <Parallax pages={4} style={{ top: '10', left: '0' }}>
         <ul>
-          {time.map((times, i) => (
+          {data.map((element, i) => (
             <ParallaxLayer offset={i/8}>
-              <li key={i}>{times}</li>
+              <li key={i}>Time {element.time} Temp:{element.temp}°</li>
             </ParallaxLayer>
           ))}
         </ul>
